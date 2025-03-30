@@ -1,0 +1,17 @@
+http://127.0.0.1:8000/search?jobTitle=Python&jobLevel=senior
+
+http://127.0.0.1:8000/search?jobTitle=Python&jobLevel=senior&jobType=internship
+
+-----------------
+
+https://jobicy.com/api/v2/remote-jobs?tag=Python
+
+https://jobicy.com/api/v2/remote-jobs?geo=belgium&tag=Java
+
+https://jobdataapi.com/api/jobs/?title=Java&location=Belgium
+
+https://jobdataapi.com/api/jobs/?title=Java&location=Belgium&experience_level=MI
+
+http://127.0.0.1:8000/search?jobTitle=Java&country=Belgium
+
+Skoro jobicy jest remote zawsze, to nie sprawdzamy lokalizacji, natomiast dla jobdataapi to jest część zapytania

@@ -1,0 +1,38 @@
+{
+  "question": "What service is the best for film streaming?",
+  "options": [
+    "Netflix",
+    "Megogo",
+    "KyivstarTV"
+  ]
+}
+
+{
+  "question": "Which music streaming service do you prefer?",
+  "description": "Select your favorite music streaming platform.",
+  "options": [
+    "Spotify",
+    "Apple Music",
+    "YouTube Music",
+    "Deezer"
+  ]
+}
+
+{
+  "question": "Where would you prefer to go on vacation?",
+  "description": "Choose the type of destination you'd most like to visit for a holiday.",
+  "options": [
+    "Beach",
+    "Mountains",
+    "City Tour",
+    "Countryside"
+  ]
+}
+
+
+vote for poll 2:
+
+{
+  "user_id": "USER_ONE",
+  "option": "Spotify"
+}

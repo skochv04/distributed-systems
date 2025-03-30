@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote Job Searcher</title>
+    <style>
+        body {
+            font-family: Montserrat, sans-serif;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+        label {
+            display: block;
+            margin-top: 16px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            font-family: Montserrat, sans-serif;
+        }
+        .salary-range {
+            display: flex;
+            justify-content: space-between;
+        }
+        .radio-group {
+            display: flex;
+            gap: 20px;
+        }
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+        }
+        .search-button {
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin-top: 15px;
+        }
+    
+        .search-button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+    
+        .search-button:active {
+            background-color: #004494;
+            transform: scale(1);
+        }
+    </style>
+    <script>
+        function validateForm(event) {
+            const minSalary = document.getElementById("salaryMin").value;
+            const maxSalary = document.getElementById("salaryMax").value;
+    
+            if ((minSalary && minSalary < 0) || (maxSalary && maxSalary < 0)) {
+                alert("Salary values must be 0 or greater.");
+                event.preventDefault();
+                return false;
+            }
+    
+            cleanEmptyFields();
+            return true;
+        }
+    
+        function cleanEmptyFields() {
+            const form = document.querySelector("form");
+            const inputs = form.querySelectorAll("input, select");
+    
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    input.removeAttribute("name");
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+
+    <h2>Remote Job Searcher</h2>
+    <form action="http://localhost:8000/search" method="get" onsubmit="validateForm()">
+        <label for="jobTitle">Job Title:</label>
+        <input type="text" id="jobTitle" name="jobTitle" placeholder="Enter job title" required>
+
+        <label for="country">Country:</label>
+        <input type="text" id="country" name="country" placeholder="Enter country">
+
+        <label>Monthly Salary (€):</label>
+        <div class="salary-range">
+            <input type="number" id="salaryMin" name="salaryMin" placeholder="Min" min="0">
+            <input type="number" id="salaryMax" name="salaryMax" placeholder="Max" min="0">
+        </div>
+
+        <label for="jobLevel">Job Level:</label>
+        <select id="jobLevel" name="jobLevel">
+            <option value="any">Any</option>
+            <option value="junior">Junior</option>
+            <option value="mid">Mid</option>
+            <option value="senior">Senior</option>
+        </select>
+
+        <label for="jobType">Job Type:</label>
+        <select id="jobType" name="jobType">
+            <option value="any">Any</option>
+            <option value="full-time">Full Time</option>
+            <option value="contract">Contract</option>
+            <option value="part-time">Part Time</option>
+            <option value="internship">Internship</option>
+        </select>
+
+        <label for="industry">Industry:</label>
+        <select id="industry" name="industry">
+            <option value="">Any</option>
+            <option value="business">Business Development</option>
+            <option value="copywriting">Content & Editorial</option>
+            <option value="design-multimedia">Creative & Design</option>
+            <option value="supporting">Customer Success</option>
+            <option value="data-science">Data Science & Analytics</option>
+            <option value="admin">DevOps & Infrastructure</option>
+            <option value="accounting-finance">Finance & Accounting</option>
+            <option value="hr">HR & Recruiting</option>
+            <option value="legal">Legal & Compliance</option>
+            <option value="marketing">Marketing & Sales</option>
+            <option value="management">Product & Operations</option>
+            <option value="dev">Programming</option>
+            <option value="seller">Sales</option>
+            <option value="seo">SEO</option>
+            <option value="smm">Social Media Marketing</option>
+            <option value="engineering">Software Engineering</option>
+            <option value="technical-support">Technical Support</option>
+            <option value="web-app-design">Web & App Design</option>
+        </select>
+
+        <button type="submit" class="search-button">Search</button>
+    </form>
+
+</body>
+</html>

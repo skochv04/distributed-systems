@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Search Results</title>
+    <style>
+        body {
+            font-family: Montserrat, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        .job-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .job-card h3 {
+            margin: 0 0 10px;
+        }
+        .job-card img {
+            max-height: 50px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .job-card a {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background-color: #007BFF;
+            padding: 8px 12px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .job-card a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Job Search Results</h2>
+    
+    {% if vacancies %}
+        {% for job in vacancies %}
+            <div class="job-card">
+                {% if job.company_logo %}
+                    <img src="{{ job.company_logo }}" alt="Company Logo">
+                {% endif %}
+                <h3>{{ job.job_title }}</h3>
+                <p><strong>Company:</strong> {{ job.company_name }}</p>
+                <p><strong>Location:</strong> {{ ", ".join(job.job_countries) }}</p>
+                <p><strong>Level:</strong> {{ job.job_level }}</p>
+                <p><strong>Type:</strong> {{ ", ".join(job.job_types) }}</p>
+                {% if job.salary_month %}
+                    <p><strong>Monthly Salary:</strong> {{ job.salary_month }} {{ job.salary_currency }}</p>
+                {% endif %}
+                <p><strong>Published:</strong> {{ job.publish_date }}</p>
+                <p>{{ job.description[:200] }}...</p>
+                <a href="{{ job.url }}" target="_blank">View Job</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No jobs found.</p>
+    {% endif %}
+</body>
+</html>
