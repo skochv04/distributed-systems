@@ -8,6 +8,6 @@ Creating a simple client-server application for chatting, where messages can be 
 Developing two simple RESTful APIs:
 
 - An API for managing voting processes.
-- JobSearcher API that connects to two job listing servers, normalizes job vacancy data, and integrates with a currency exchange server to convert salaries into the appropriate currency (Euro).
+- JobSearcher API that connects to two job listing servers, normalizes job vacancy data, and integrates with a currency exchange server to convert salaries into the appropriate currency (Euro). [Click to watch demo video](https://youtu.be/WL3Z05KY3wI)
 
 ## To be continued...
